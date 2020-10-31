@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow: unset;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.container{
+  flex: 1 0 auto;
+}
+
+nav{
+  background-color: #123546 !important;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+
+.sidenav-overlay{
+  z-index: 2 !important;
+}
+
+.brand-logo img{
+  width: 200px;
+  margin-top: 8px;
+}
+
+
+
+.jumbotron {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.jumbotron-icon {
+  width: 500px !important;
+  order: 1;
+}
+
+h4.title{
+  text-align: center;
+  margin-top: 10px;
+}
+
+h4.title::after{
+  content: '';
+  display: block;
+  border-bottom: 2px solid black;
+  width: 20%;
+  padding-bottom: 10px;
+  margin: auto;
+}
+
+.jumbotron h2 {
+  order: 2;
+  font-size: 25px;
+  text-align: center;
+}
+
+.footer {
+  padding: 10px;
+  color: #ddd;
+  text-align: center;
+  background-color: #123546;
+}
+
+.card-image img{
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+.card-news img{
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.klasemen, .jadwal {
+  margin-top: 50px;
+}
+
+.klasemen .card, .jadwal .card {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.klasemen img, .jadwal img {
+  object-fit: contain;
+  height: 250px;
+}
+
+.klasemen h5 {
+  text-align: center;
+}
+
+a.team{
+  text-decoration: none;
+  color: #123546;
+}
+
+a.team:hover{
+  color: #0c6edd;
+  font-weight: bold;
+
+}
+
+.addToFavorit{
+  border: none;
+}
+
+.addToFavorit i{
+  background-color: #fff;
+  color: #000;
+}
+
+p.match{
+  padding: 15px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+button.btn-floating {
+    border: none;
+    margin-left: 10px;
+}
+
+.text-center{
+  text-align: center !important;
+}
+
+
+@media(min-width: 768px){
+  .jumbotron {
+    justify-content: space-between;
+    flex-direction: row;
+    height: 500px;
+    align-items: center;
+  }  
+
+  .jumbotron-icon {
+    order: 2;
+    flex: .3;
+  }
+  
+  .jumbotron h2 {
+    order: 1;
+    flex: .5;
+    font-size: 40px;
+    text-transform: capitalize;
+    text-align: left;
+  }
+
+}
+
+@media(max-width: 768px){
+  .jumbotron-icon{
+    width: 250px !important;
+  }
+  .brand-logo img{
+    width: 170px;
+    margin-top: 8px;
+  }
+}

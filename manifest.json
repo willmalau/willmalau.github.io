@@ -1,0 +1,36 @@
+{
+  "short_name": "GilaBola",
+  "name": "Gila Bola for Everyone",
+  "description": "web application to display the latest football news",
+  "icons": [
+    {
+      "src": "./assets/images/logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/images/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/images/logo-270.png",
+      "type": "image/png",
+      "sizes": "270x270",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/images/logo-128.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#123546",
+  "display": "standalone",
+  "theme_color": "#123546",
+  "gcm_sender_id": "29971041999"
+}

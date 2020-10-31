@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png" type="image/x-icon">
+    <meta name="theme-color" content="#123465"/>
+    <title>Gila Bola</title>
+</head>
+<body>
+    <nav class="darken-4 lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a href="index.html#jadwal" class="brand-logo" id="logo-container"><i class="material-icons">arrow_back</i><img src="./assets/images/logo-brand.png" alt=""></a>
+        </div>
+    </nav>
+
+    <div class="container" id="content"></div>
+
+    <footer>
+        <div class="footer">
+        <h6>Copyright &copy; 2020 - Gila Bola, All Right Reserved</h6>
+        </div>
+    </footer>
+
+    <script src="js/materialize.min.js"></script>
+    <script src="js/jadwalLiga.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function() {
+            navigator.serviceWorker
+                .register("/service-worker.js")
+                .then(function() {
+                console.log("Pendaftaran ServiceWorker berhasil");
+                })
+                .catch(function() {
+                console.log("Pendaftaran ServiceWorker gagal");
+                });
+            });
+        } else {
+            console.log("ServiceWorker belum didukung browser ini.");
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            getAllMatchs();
+        });
+    </script>
+</body>
+</html>

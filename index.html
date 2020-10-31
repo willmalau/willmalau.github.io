@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="web application to display the latest football news">
+  <link rel="stylesheet" href="css/materialize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="/manifest-push.json">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png" type="image/x-icon">
+  <meta name="theme-color" content="#123465"/>
+  <title>Gila Bola</title>
+</head>
+<body>
+  <!-- preloader -->
+  <div id="preloader">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="darken-4 lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo" id="logo-container"><img src="./assets/images/logo-brand.png" alt=""></a>
+      <a href="#" class="sidenav-trigger" data-target="nav-mobile">☰</a>
+      
+      <ul class="topnav right hide-on-med-and-down"></ul>
+      <ul class="sidenav" id="nav-mobile"></ul>
+    </div>
+  </nav>
+
+  <div class="container" id="body-content"></div>
+
+  <footer>
+    <div class="footer">
+      <h6>Copyright &copy; 2020 - Gila Bola, All Right Reserved</h6>
+    </div>
+  </footer>
+
+  <script src="js/materialize.min.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/idb.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/tim.js"></script>
+  <script>
+      if (!('serviceWorker' in navigator)) {
+      console.log("Service worker tidak didukung browser ini.");
+      } else {
+        registerServiceWorker();
+        requestPermission();
+      }
+      // Register service worker
+    function registerServiceWorker() {
+      return navigator.serviceWorker.register('service-worker.js')
+        .then(function (registration) {
+          console.log('Registrasi service worker berhasil.');
+          return registration;
+        })
+        .catch(function (err) {
+          console.error('Registrasi service worker gagal.', err);
+        });
+    }
+
+      function requestPermission() {
+        if ('Notification' in window) {
+          Notification.requestPermission().then(function (result) {
+            if (result === "denied") {
+              console.log("Fitur notifikasi tidak diijinkan.");
+              return;
+            } else if (result === "default") {
+              console.error("Pengguna menutup kotak dialog permintaan ijin.");
+              return;
+            }
+            
+            if (('PushManager' in window)) {
+              navigator.serviceWorker.ready.then(() => {
+                if (('PushManager' in window)) {
+                    navigator.serviceWorker.getRegistration().then((registration) => {
+                        registration.pushManager.subscribe({
+                          userVisibleOnly: true,
+                      applicationServerKey: urlBase64ToUint8Array("BKGZq6EhEEjuWt6UvLnirlvR94PN8u6bHjCisKrd48Dd9BZSTPRuWsLishmecwqbXnode2zNYR5uB8ejTLmHKhA")
+                      }).then(function(subscribe) {
+                          console.log('Berhasil melakukan subscribe dengan endpoint: ', subscribe.endpoint);
+                          console.log('Berhasil melakukan subscribe dengan p256dh key: ', btoa(String.fromCharCode.apply(
+                              null, new Uint8Array(subscribe.getKey('p256dh')))));
+                          console.log('Berhasil melakukan subscribe dengan auth key: ', btoa(String.fromCharCode.apply(
+                              null, new Uint8Array(subscribe.getKey('auth')))));
+                      }).catch(function(e) {
+                          console.error('Tidak dapat melakukan subscribe ', e.message);
+                      });
+                    });
+                }
+            });
+              navigator.serviceWorker.getRegistration().then(function(registration) {
+                  registration.pushManager.subscribe({
+                      userVisibleOnly: true,
+                      applicationServerKey: urlBase64ToUint8Array("BKGZq6EhEEjuWt6UvLnirlvR94PN8u6bHjCisKrd48Dd9BZSTPRuWsLishmecwqbXnode2zNYR5uB8ejTLmHKhA")
+                  }).then(function(subscribe) {
+                      console.log('Berhasil melakukan subscribe dengan endpoint: ', subscribe.endpoint);
+                      console.log('Berhasil melakukan subscribe dengan p256dh key: ', btoa(String.fromCharCode.apply(
+                          null, new Uint8Array(subscribe.getKey('p256dh')))));
+                      console.log('Berhasil melakukan subscribe dengan auth key: ', btoa(String.fromCharCode.apply(
+                          null, new Uint8Array(subscribe.getKey('auth')))));
+                  }).catch(function(e) {
+                      console.error('Tidak dapat melakukan subscribe ', e.message);
+                  });
+              });
+          }
+          });
+        }
+      }
+      function urlBase64ToUint8Array(base64String) {
+        const padding = '='.repeat((4 - base64String.length % 4) % 4);
+        const base64 = (base64String + padding)
+            .replace(/-/g, '+')
+            .replace(/_/g, '/');
+        const rawData = window.atob(base64);
+        const outputArray = new Uint8Array(rawData.length);
+        for (let i = 0; i < rawData.length; ++i) {
+            outputArray[i] = rawData.charCodeAt(i);
+        }
+        return outputArray;
+    }
+  </script>
+</body>
+</html>
