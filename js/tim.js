@@ -94,7 +94,6 @@ function getFavoriteTeams() {
         teamsHTML = '<h5 class="text-center">Tidak ada tim yang anda favoritkan</h5>'
     }
     document.getElementById("favorite-teams").innerHTML = teamsHTML
-    document.getElementById('preloader').style.display = 'none';
 })
 }
 
@@ -177,5 +176,4 @@ function teamByIdComp(data) {
     `;
     // Sisipkan komponen card ke dalam elemen dengan id #content
     document.getElementById("body-content").innerHTML = teamHTML;
-    document.getElementById('preloader').style.display = 'none';
 }
