@@ -12,6 +12,7 @@ const urlsToCache = [
   { url: '/nav.html', revision: 1 },
   { url: '/jadwal-liga.html', revision: 1 },
   { url: '/klasemen-liga.html', revision: 1 },
+  { url: '/team.html', revision: 1 },
   { url: '/css/style.css', revision: 1 },
   { url: '/js/nav.js', revision: 1 },
   { url: '/js/db.js', revision: 1 },
@@ -52,6 +53,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   new RegExp('https://api.football-data.org/v2/'),
   workbox.strategies.staleWhileRevalidate({
+    cacheName: 'gilaBola',
     plugins: [
       new workbox.cacheableResponse.Plugin({
         statuses: [0, 200],
