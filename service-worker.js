@@ -18,7 +18,7 @@ const urlsToCache = [
   { url: '/js/db.js', revision: 1 },
   { url: '/manifest.json', revision: 1 },
   { url: '/js/klasemen.js', revision: 1 },
-  { url: '/js/jadwalLiga', revision: 1 },
+  { url: '/js/jadwalLiga.js', revision: 1 },
   { url: '/js/tim.js', revision: 1 },
   "/pages/home.html",
   "/pages/favorit.html",
